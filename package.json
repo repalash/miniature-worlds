@@ -1,0 +1,26 @@
+{
+  "name": "miniature-worlds",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Miniature world tiles built in code with threepipe and WebGI plugins: a starter for people and coding agents.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc",
+    "preview": "vite preview",
+    "shot": "node scripts/shot.mjs",
+    "shot:install": "playwright install chromium"
+  },
+  "dependencies": {
+    "@threepipe/plugin-tweakpane": "^0.10.1",
+    "@threepipe/webgi-plugins": "^0.7.0",
+    "threepipe": "^0.6.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.8"
+  }
+}
