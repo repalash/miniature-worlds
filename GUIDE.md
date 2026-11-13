@@ -14,7 +14,7 @@ and the light is computed in real time.
 
 - The 14 tiles: https://files.threepipe.org/p/webgi-worlds/
 - The live demo (pick a tile in the menu): https://files.threepipe.org/p/ssgi-worlds/demo/
-- The starter: `<starter link>` (Apache-2.0)
+- The starter: [repalash/miniature-worlds](https://github.com/repalash/miniature-worlds) (Apache-2.0)
 
 ## The stack
 
@@ -79,7 +79,8 @@ The kit is the part an agent reuses for every tile. Each file starts with a comm
 ## Set up
 
 ```bash
-# copy the starter, then:
+git clone https://github.com/repalash/miniature-worlds
+cd miniature-worlds
 npm install
 npm run dev     # http://localhost:5173/?tile=alpine
 ```
