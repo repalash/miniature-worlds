@@ -2,7 +2,29 @@
   "name": "miniature-worlds",
   "private": true,
   "version": "0.1.0",
-  "description": "Miniature world tiles built in code with threepipe and WebGI plugins: a starter for people and coding agents.",
+  "description": "Miniature world tiles built in code with threepipe and the webgi plugins: a world kit, one finished tile and instructions for coding agents.",
+  "keywords": [
+    "threepipe",
+    "webgi",
+    "three.js",
+    "webgl",
+    "procedural generation",
+    "procedural terrain",
+    "miniature world",
+    "diorama",
+    "global illumination",
+    "ssgi",
+    "real-time rendering",
+    "coding agent"
+  ],
+  "homepage": "https://files.threepipe.org/p/miniature-worlds/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repalash/miniature-worlds.git"
+  },
+  "bugs": {
+    "url": "https://github.com/repalash/miniature-worlds/issues"
+  },
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {

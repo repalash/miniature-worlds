@@ -8,20 +8,21 @@ next: false
 
 # Build miniature worlds with a coding agent
 
-This guide shows how we built 14 miniature world tiles with Claude Opus 5.5 on threepipe and the WebGI plugins, and
+This guide shows how we built 14 miniature world tiles with Claude Opus 5.5 on threepipe and the *webgi* plugins, and
 how you can build your own with the same kit. Everything runs in the browser: the land is generated at load time,
 and the light is computed in real time.
 
-- The 14 tiles: https://files.threepipe.org/p/webgi-worlds/
+- The tiles, each with a still, its GI effect and a live link: [files.threepipe.org/p/miniature-worlds](https://files.threepipe.org/p/miniature-worlds/)
 - The live demo (pick a tile in the menu): https://files.threepipe.org/p/ssgi-worlds/demo/
-- The starter: [repalash/miniature-worlds](https://github.com/repalash/miniature-worlds) (Apache-2.0)
+- The starter: [repalash/miniature-worlds](https://github.com/repalash/miniature-worlds) (Apache-2.0), and
+  [its build, live](https://files.threepipe.org/p/miniature-worlds/starter/)
 
 ## The stack
 
 | Part | What it does | Licence |
 |---|---|---|
 | [threepipe](https://threepipe.org) | A three.js framework: viewer, materials, plugins, loaders, serialization | Apache-2.0 |
-| [WebGI plugins](https://webgi.dev) (`@threepipe/webgi-plugins`) | SSGI (screen-space global illumination), SSR, TAA, bloom, depth of field, velocity buffer | GPL-3.0 with additional terms: free for personal and commercial use |
+| [*webgi* plugins](https://webgi.dev) (`@threepipe/webgi-plugins`) | SSGI (screen-space global illumination), SSR, TAA, bloom, depth of field, velocity buffer | GPL-3.0 with additional terms: free for personal and commercial use |
 | The world kit (in the starter) | Terrain, erosion, cut-away sides, scatter, trees, grass, water, procedural materials, the look | Apache-2.0 (a few files MIT) |
 | Your coding agent | Writes a tile as TypeScript, renders stills, fixes what it sees | |
 
@@ -242,7 +243,7 @@ agents shared the GPU):
 - The Poly Haven files load from a copy on threepipe cloud, as the Poly Haven API terms ask applications to host
   their own copy. Use your own host for a product (`src/kit/assets.ts`).
 - Code: the starter is Apache-2.0; its GLSL noise library is MIT ("Golden Temple" by Leon Lin), and the erosion
-  loop follows Sebastian Lague's MIT implementation. The WebGI plugins package is GPL-3.0 with additional terms that
+  loop follows Sebastian Lague's MIT implementation. The *webgi* plugins package is GPL-3.0 with additional terms that
   allow free personal and commercial use of the free plugins. The starter's `THIRD_PARTY_NOTICES.md` lists all of it.
 
 ## Share yours

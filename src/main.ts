@@ -55,6 +55,28 @@ function showErrors(canvas: HTMLCanvasElement) {
     canvas.addEventListener('webglcontextlost', () => add('WebGL context lost (GPU out of memory or a draw call ran too long)'))
 }
 
+// Cache Storage for downloaded files, where the page may use it. In a sandboxed document (an opaque origin, such as a
+// sandboxed iframe or a page served with `CSP: sandbox` without allow-same-origin, as on files.threepipe.org) any read
+// of window.caches throws, and threepipe 0.6.0 does not guard that read (fixed in threepipe after 0.6.0).
+function canUseCacheStorage() {
+    try {
+        return !!window.caches
+    } catch {
+        return false
+    }
+}
+
+// The settings panel needs localStorage: @threepipe/plugin-tweakpane 0.10.1 reads its theme from it without a guard
+// (fixed in the plugin after 0.10.1), and in a sandboxed document that read throws too. There the tile opens without
+// the panel; ?view= and ?time= still pick a view and a time of day.
+function canUseLocalStorage() {
+    try {
+        return !!window.localStorage
+    } catch {
+        return false
+    }
+}
+
 async function init() {
     const canvas = document.getElementById('mcanvas') as HTMLCanvasElement
     showErrors(canvas)
@@ -63,6 +85,7 @@ async function init() {
         msaa: false,
         rgbm: true,
         maxHDRIntensity: 8,
+        assetManager: {storage: canUseCacheStorage()},
         plugins: [LoadingScreenPlugin, GBufferPlugin, SSAAPlugin, SSAOPlugin, BloomPlugin, SSReflectionPlugin,
             TemporalAAPlugin, VelocityBufferPlugin, new SSGIPlugin(), new DepthOfFieldPlugin(false),
             new VignettePlugin(false), ColorGradePlugin],
@@ -121,7 +144,9 @@ async function init() {
     }
     ;(window as any).miniWorld = {viewer, ssgi, rig, state, result, tileId, measureFrameTime: measure}
 
-    if (getUrlQueryParam('ui') !== '0') {
+    const showPanel = getUrlQueryParam('ui') !== '0'
+    if (showPanel && !canUseLocalStorage()) console.warn('No settings panel: this page cannot use localStorage (a sandboxed document). Use ?view= and ?time=.')
+    if (showPanel && canUseLocalStorage()) {
         const ui = viewer.addPluginSync(new TweakpaneUiPlugin(true))
         const selected = {id: tileId}
         const frameReport = {text: 'not measured'}
