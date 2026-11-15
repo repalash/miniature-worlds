@@ -37,7 +37,7 @@ pair. Under the Alpine Pass's arch, the sunlit snow cone lights the underside of
 **A loop for your agent.** `npm run shot` renders converged stills with GI on and off in headless Chromium, so the
 agent can look at its own frames, compare them with your reference and fix the largest defect, one pass at a time.
 
-![The agent loop: brief, write the tile, render stills with GI on and off, look and compare, fix the largest defect, repeat](https://files.threepipe.org/p/miniature-worlds/starter/readme/loop.jpg)
+![The agent loop: brief, write the tile, render stills with GI on and off, look and compare, fix the largest defect, repeat](https://files.threepipe.org/p/miniature-worlds/starter/readme/loop-v2.jpg)
 
 ## Start
 
@@ -127,13 +127,14 @@ group is type-checked but not used by it yet.
   `maxScreenRadius` setting) than the published `@threepipe/webgi-plugins` 0.7.0 that this starter uses. The tile
   builds and renders with 0.7.0, but its GI and its frame times can differ from the demo: judge them in your tab.
 - Video export (`CanvasRecorderPlugin`) is in threepipe 0.7 (prerelease); the starter stays on threepipe 0.6.0.
-- The live demo is served as a sandboxed page (no localStorage, no Cache Storage). There it opens without the settings
-  panel, because `@threepipe/plugin-tweakpane` 0.10.1 needs localStorage; pick a view and a time with `?view=` and
-  `?time=` (for example `?view=Bridge`). On your own server or `npm run dev` the panel is there.
+- The live demo runs as a sandboxed page, where the browser blocks localStorage and Cache Storage. The settings panel
+  (`@threepipe/plugin-tweakpane` 0.10.1) remembers its light or dark theme in localStorage and stops with an error
+  when it can't read it, so the live demo leaves the panel out: pick a view and a time with `?view=` and `?time=`
+  (for example `?view=Bridge`). The plugin's next release handles a missing localStorage. On your own server or with
+  `npm run dev` the panel shows.
 
 ## Licence
 
 The starter's code is under the Apache License 2.0 (`LICENSE`, `NOTICE`). `src/kit/glslNoise.ts` and parts of
-`src/kit/proc.ts` and `src/kit/erosion.ts` are under the MIT licence. The *webgi* plugins package has its own licence
-(GPL-3.0 with additional terms that allow free personal and commercial use of the free plugins). The tile's remote
+`src/kit/proc.ts` and `src/kit/erosion.ts` are under the MIT licence. The tile's remote
 assets are CC0 (Poly Haven). Details: `THIRD_PARTY_NOTICES.md`.
