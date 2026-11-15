@@ -66,6 +66,10 @@ URL parameters: `?tile=<id>`, `?view=<name>`, `?time=<name>`, `?gi=0` (SSGI off)
 
 ## Build a tile with an agent
 
+You don't need to clone first. Send the tile prompt from [`GUIDE.md`](GUIDE.md#the-prompt) to your coding agent
+(Claude Code, Codex, Cursor or another), in an empty folder or a web session, with a reference image: the prompt names
+this repo, and the agent clones it, installs it and reads `AGENTS.md`. If you cloned it yourself:
+
 1. Open this folder in your agent (for Claude Code: `claude` in this folder).
 2. Give it a reference (a photo or a concept image) and the tile prompt from `GUIDE.md`, section "The prompt".
 3. Keep `npm run dev` open in a browser tab with a GPU. The agent renders stills with `npm run shot`, but headless
