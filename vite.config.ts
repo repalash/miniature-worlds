@@ -5,7 +5,7 @@ export default defineConfig({
     base: './',
     build: {
         target: 'es2022',
-        // threepipe and the WebGI plugins are one large chunk; that is expected
+        // threepipe and the webgi plugins are one large chunk; that is expected
         chunkSizeWarningLimit: 8000,
     },
 })

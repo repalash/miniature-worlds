@@ -121,7 +121,8 @@ async function init() {
     }
     ;(window as any).miniWorld = {viewer, ssgi, rig, state, result, tileId, measureFrameTime: measure}
 
-    if (getUrlQueryParam('ui') !== '0') {
+    const showPanel = getUrlQueryParam('ui') !== '0'
+    if (showPanel) {
         const ui = viewer.addPluginSync(new TweakpaneUiPlugin(true))
         const selected = {id: tileId}
         const frameReport = {text: 'not measured'}

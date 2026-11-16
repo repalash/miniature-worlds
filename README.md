@@ -1,15 +1,43 @@
 # Miniature worlds starter
 
-Build miniature world tiles in code: a square of land with cut-away sides, lit in real time in the browser. The
-starter runs on [threepipe](https://threepipe.org) and the free [WebGI plugins](https://webgi.dev) (SSGI, SSR,
-TAA, bloom, depth of field). It has the world kit we used for our tiles and one finished tile, the Alpine Pass.
+[![Live demo](https://img.shields.io/badge/live%20demo-Alpine%20Pass-e3ad62)](https://files.threepipe.org/p/miniature-worlds/starter/)
+[![threepipe 0.6](https://img.shields.io/badge/threepipe-0.6.0-1382fb)](https://threepipe.org)
+[![@threepipe/webgi-plugins 0.7](https://img.shields.io/badge/%40threepipe%2Fwebgi--plugins-0.7.0-1382fb)](https://www.npmjs.com/package/@threepipe/webgi-plugins)
+[![Licence: Apache-2.0](https://img.shields.io/badge/licence-Apache--2.0-555)](LICENSE)
 
-- Our 14 tiles: https://files.threepipe.org/p/webgi-worlds/
-- The live demo (pick a tile in the menu): https://files.threepipe.org/p/ssgi-worlds/demo/
-- The guide: `GUIDE.md` (to be published on threepipe.org)
+[![The Alpine Pass, the starter's example tile: a gravel road crosses a gorge on a granite arch and climbs to a saddle under a snow peak](https://files.threepipe.org/p/miniature-worlds/starter/readme/hero.jpg)](https://files.threepipe.org/p/miniature-worlds/starter/)
+
+Build miniature world tiles in code: a square of land with cut-away sides, lit in real time in the browser. The
+starter runs on [threepipe](https://threepipe.org) and the free [*webgi* plugins](https://webgi.dev) (SSGI, SSR,
+TAA, bloom, depth of field). It has the world kit we used for our tiles and one finished tile, the Alpine Pass
+(above).
+
+- **Live demo** of this starter's build: https://files.threepipe.org/p/miniature-worlds/starter/
+- **All our tiles**, each with a still and a live link: https://files.threepipe.org/p/miniature-worlds/
+- **The guide**: `GUIDE.md`, also on threepipe.org as
+  [Build miniature worlds with a coding agent](https://threepipe.org/notes/miniature-worlds.html)
 
 It is made to be driven by a coding agent (Claude Code, Codex, or any other). `AGENTS.md` (and `CLAUDE.md`) tells
 the agent the rules, the tile contract, how to check its frames and the budgets.
+
+[![Miniature world tiles on a dark backdrop; play the 17 s video](https://files.threepipe.org/p/miniature-worlds/starter/readme/video.jpg)](https://files.threepipe.org/a/9e2c89be/miniature-worlds.mp4)
+
+## What you get
+
+**The world kit and a finished tile.** Terrain from a height function with erosion and cut-away rock beds, seeded
+scatter, water, props and procedural materials, all generated when the page loads. Close-ups of the Alpine Pass:
+
+![Four close-ups of the Alpine Pass: the cut-away side with folded rock beds, spruces and grass scattered on the slope, the tarn and its waterfall, the arch bridge with rails and a signpost](https://files.threepipe.org/p/miniature-worlds/starter/readme/kit.jpg)
+
+**Light that shows GI.** Each tile is staged for one global illumination effect and proves it with a GI on/off
+pair. Under the Alpine Pass's arch, the sunlit snow cone lights the underside of the arch and the gorge wall:
+
+![The arch bridge seen from the gorge, GI off on the left and GI on on the right: with GI the underside of the arch and the rock are lighter](https://files.threepipe.org/p/miniature-worlds/starter/readme/gi.jpg)
+
+**A loop for your agent.** `npm run shot` renders converged stills with GI on and off in headless Chromium, so the
+agent can look at its own frames, compare them with your reference and fix the largest defect, one pass at a time.
+
+![The agent loop: brief, write the tile, render stills with GI on and off, look and compare, fix the largest defect, repeat](https://files.threepipe.org/p/miniature-worlds/starter/readme/loop-v2.jpg)
 
 ## Start
 
@@ -38,6 +66,10 @@ URL parameters: `?tile=<id>`, `?view=<name>`, `?time=<name>`, `?gi=0` (SSGI off)
 
 ## Build a tile with an agent
 
+You don't need to clone first. Send the tile prompt from [`GUIDE.md`](GUIDE.md#the-prompt) to your coding agent
+(Claude Code, Codex, Cursor or another), in an empty folder or a web session, with a reference image: the prompt names
+this repo, and the agent clones it, installs it and reads `AGENTS.md`. If you cloned it yourself:
+
 1. Open this folder in your agent (for Claude Code: `claude` in this folder).
 2. Give it a reference (a photo or a concept image) and the tile prompt from `GUIDE.md`, section "The prompt".
 3. Keep `npm run dev` open in a browser tab with a GPU. The agent renders stills with `npm run shot`, but headless
@@ -49,6 +81,7 @@ URL parameters: `?tile=<id>`, `?view=<name>`, `?time=<name>`, `?gi=0` (SSGI off)
 
 ```
 index.html, vite.config.ts, tsconfig.json
+public/            the favicon (copied into dist/ as is)
 src/
   main.ts          the viewer: plugins, the settings panel, views, times, ?tile=
   types.ts         the tile contract (Tile, TileResult)
@@ -90,7 +123,7 @@ group is type-checked but not used by it yet.
 
 ## Differences from our hosted demo
 
-- The hosted demo runs a newer SSGI from the WebGI plugins' development branch (temporal denoising and a
+- The hosted demo runs a newer SSGI from the *webgi* plugins' development branch (temporal denoising and a
   `maxScreenRadius` setting) than the published `@threepipe/webgi-plugins` 0.7.0 that this starter uses. The tile
   builds and renders with 0.7.0, but its GI and its frame times can differ from the demo: judge them in your tab.
 - Video export (`CanvasRecorderPlugin`) is in threepipe 0.7 (prerelease); the starter stays on threepipe 0.6.0.
@@ -98,6 +131,5 @@ group is type-checked but not used by it yet.
 ## Licence
 
 The starter's code is under the Apache License 2.0 (`LICENSE`, `NOTICE`). `src/kit/glslNoise.ts` and parts of
-`src/kit/proc.ts` and `src/kit/erosion.ts` are under the MIT licence. The WebGI plugins package has its own licence
-(GPL-3.0 with additional terms that allow free personal and commercial use of the free plugins). The tile's remote
+`src/kit/proc.ts` and `src/kit/erosion.ts` are under the MIT licence. The tile's remote
 assets are CC0 (Poly Haven). Details: `THIRD_PARTY_NOTICES.md`.

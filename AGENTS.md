@@ -1,6 +1,6 @@
 # Instructions for coding agents
 
-This project builds miniature world tiles in code with threepipe and the WebGI plugins. A tile is a square of land
+This project builds miniature world tiles in code with threepipe and the *webgi* plugins. A tile is a square of land
 (about 40 m) with cut-away sides, built at load time from seeded functions, lit by one sun with screen-space global
 illumination (SSGI). Read `README.md` for the layout and the kit table, and `src/tiles/alpine.ts` with
 `src/tiles/alpine/` as the worked example, before you write a tile.
