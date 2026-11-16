@@ -127,11 +127,6 @@ group is type-checked but not used by it yet.
   `maxScreenRadius` setting) than the published `@threepipe/webgi-plugins` 0.7.0 that this starter uses. The tile
   builds and renders with 0.7.0, but its GI and its frame times can differ from the demo: judge them in your tab.
 - Video export (`CanvasRecorderPlugin`) is in threepipe 0.7 (prerelease); the starter stays on threepipe 0.6.0.
-- The live demo runs as a sandboxed page, where the browser blocks localStorage and Cache Storage. The settings panel
-  (`@threepipe/plugin-tweakpane` 0.10.1) remembers its light or dark theme in localStorage and stops with an error
-  when it can't read it, so the live demo leaves the panel out: pick a view and a time with `?view=` and `?time=`
-  (for example `?view=Bridge`). The plugin's next release handles a missing localStorage. On your own server or with
-  `npm run dev` the panel shows.
 
 ## Licence
 

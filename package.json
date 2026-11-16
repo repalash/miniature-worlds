@@ -36,9 +36,9 @@
     "shot:install": "playwright install chromium"
   },
   "dependencies": {
-    "@threepipe/plugin-tweakpane": "^0.10.1",
+    "@threepipe/plugin-tweakpane": "^0.10.2",
     "@threepipe/webgi-plugins": "^0.7.0",
-    "threepipe": "^0.6.0"
+    "threepipe": "^0.6.1"
   },
   "devDependencies": {
     "playwright": "^1.65.0",
